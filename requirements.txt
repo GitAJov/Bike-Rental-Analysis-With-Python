@@ -1,0 +1,10 @@
+Untuk membuat file requirements.txt terdapat beberapa cara, bisa menggunakan pip freeze atau pipreqs. Berikut cara penggunaan dan perbedaannya.
+
+pip freeze
+pip freeze menghasilkan daftar semua library Python yang diinstal di lingkungan saat ini beserta versinya.
+ pip freeze requirements.txt
+pipreqs
+pipreqs menghasilkan file requirements.txt yang hanya mencantumkan library yang digunakan dalam proyek berdasarkan impor yang ada dalam file kode.
+pipreqs /path/to/your/project
+Tentunya kedua cara tersebut memiliki kelebihan dan kekurangan, untuk mengetahui lebih lengkap terkait freeze dan pipreqs Anda dapat membaca di tautan berikut: Ternyata Mengelola Dependensi Proyek Python Semudah Ini, lo!.
+https://www.dicoding.com/blog/ternyata-mengelola-dependensi-proyek-python-semudah-ini-lo/
