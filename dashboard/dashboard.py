@@ -6,6 +6,31 @@ import streamlit as st
 
 sns.set_theme(style='dark')
 
+# Function to load data
+def load_data():
+    # Menggunakan try-except block untuk menangani FileNotFoundError karena file ini akan dijalankan di lokal dan di cloud. 
+    try: # Untuk file yang dijalankan di cloud
+        day_df = pd.read_csv('dashboard/main_day_df.csv') 
+    except FileNotFoundError: # Untuk file yang dijalankan di lokal
+        day_df = pd.read_csv('main_day_df.csv')
+
+    try: # Untuk file yang dijalankan di cloud
+        hour_df = pd.read_csv('dashboard/main_hour_df.csv')
+    except FileNotFoundError:  # Untuk file yang dijalankan di lokal
+        hour_df = pd.read_csv('main_hour_df.csv')
+
+    # Konversi kolom date menjadi tipe data datetime
+    day_df["date"] = pd.to_datetime(day_df["date"])
+    hour_df["date"] = pd.to_datetime(hour_df["date"])
+    return day_df, hour_df
+
+# Load the dataset
+day_df, hour_df = load_data()
+
+# Menentukan minimal dan maksimal rentang tanggal yang dapat dipilih
+min_date = day_df["date"].min().date()
+max_date = day_df["date"].max().date()
+
 # Fungsi untuk menghitung jumlah penyewaan sepeda berdasarkan musim
 def season_df(df):
     season_df = df.groupby(by="season", observed=False).agg({
@@ -78,18 +103,6 @@ def temperature_bin_df(df):
     }).reset_index()
 
     return temperature_bin_df
-
-# Pemuatan data
-day_df = pd.read_csv("main_day_df.csv")
-hour_df = pd.read_csv("main_hour_df.csv")
-
-# Konversi kolom date menjadi tipe data datetime
-day_df["date"] = pd.to_datetime(day_df["date"])
-hour_df["date"] = pd.to_datetime(hour_df["date"])
-
-# Menentukan minimal dan maksimal rentang tanggal yang dapat dipilih
-min_date = day_df["date"].min().date()
-max_date = day_df["date"].max().date()
 
 # Sidebar
 with st.sidebar:
