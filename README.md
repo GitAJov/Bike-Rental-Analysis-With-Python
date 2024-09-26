@@ -8,7 +8,7 @@ https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset/data
 https://bike-rental-analysis-with-python-zevvfj4ocpr8rehrazivow.streamlit.app/
 
 ## Steps to Run Dashboard
-1. Download the source code of this repository using this link:
+1. Download the source code of this repository using this link: <br>
 https://github.com/GitAJov/Bike-Rental-Analysis-With-Python/archive/refs/tags/v1.0.zip
 
 2. Install the required libraries by opening your shell/terminal and running: 
